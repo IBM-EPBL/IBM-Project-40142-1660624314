@@ -1,0 +1,544 @@
+{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\colortbl ;\red0\green0\blue255;}
+{\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\sa200\sl276\slmult1\lang9\f0\fs22\{\par
+  "nbformat": 4,\par
+  "nbformat_minor": 0,\par
+  "metadata": \{\par
+    "colab": \{\par
+      "provenance": []\par
+    \},\par
+    "kernelspec": \{\par
+      "name": "python3",\par
+      "display_name": "Python 3"\par
+    \},\par
+    "language_info": \{\par
+      "name": "python"\par
+    \}\par
+  \},\par
+  "cells": [\par
+    \{\par
+      "cell_type": "code",\par
+      "source": [],\par
+      "metadata": \{\par
+        "id": "q4X4-yXHnAlc"\par
+      \},\par
+      "execution_count": null,\par
+      "outputs": []\par
+    \},\par
+    \{\par
+      "cell_type": "code",\par
+      "source": [\par
+        "from google.colab import drive\\n",\par
+        "drive.mount('/content/drive')"\par
+      ],\par
+      "metadata": \{\par
+        "colab": \{\par
+          "base_uri": "{\field{\*\fldinst{HYPERLINK "https://localhost:8080/"}}{\fldrslt{\ul\cf1 https://localhost:8080/}}}\f0\fs22 "\par
+        \},\par
+        "id": "HH_cmxtPnDtU",\par
+        "outputId": "089551ef-bf9f-49c6-b9a1-f9ba6bedca6a"\par
+      \},\par
+      "execution_count": 1,\par
+      "outputs": [\par
+        \{\par
+          "output_type": "stream",\par
+          "name": "stdout",\par
+          "text": [\par
+            "Mounted at /content/drive\\n"\par
+          ]\par
+        \}\par
+      ]\par
+    \},\par
+    \{\par
+      "cell_type": "markdown",\par
+      "source": [\par
+        "Import the libraries"\par
+      ],\par
+      "metadata": \{\par
+        "id": "VJBCK7YfiDd2"\par
+      \}\par
+    \},\par
+    \{\par
+      "cell_type": "code",\par
+      "source": [\par
+        "from tensorflow.keras.models import Sequential\\n",\par
+        "from tensorflow.keras.layers import Dense\\n",\par
+        "from tensorflow.keras.layers import Convolution2D\\n",\par
+        "from tensorflow.keras.layers import MaxPooling2D\\n",\par
+        "from tensorflow.keras.layers import Flatten"\par
+      ],\par
+      "metadata": \{\par
+        "id": "rxQ0LN3IiI6x"\par
+      \},\par
+      "execution_count": 1,\par
+      "outputs": []\par
+    \},\par
+    \{\par
+      "cell_type": "markdown",\par
+      "source": [\par
+        "Initialize the model"\par
+      ],\par
+      "metadata": \{\par
+        "id": "GbmjPDhGjPyp"\par
+      \}\par
+    \},\par
+    \{\par
+      "cell_type": "markdown",\par
+      "source": [\par
+        "sequential and functional API"\par
+      ],\par
+      "metadata": \{\par
+        "id": "eoOQYzVzlWJq"\par
+      \}\par
+    \},\par
+    \{\par
+      "cell_type": "markdown",\par
+      "source": [\par
+        "Adding CNN layers"\par
+      ],\par
+      "metadata": \{\par
+        "id": "lJPtQK3djftH"\par
+      \}\par
+    \},\par
+    \{\par
+      "cell_type": "code",\par
+      "source": [\par
+        "model = Sequential()"\par
+      ],\par
+      "metadata": \{\par
+        "id": "v6Zl36_PicvH"\par
+      \},\par
+      "execution_count": 2,\par
+      "outputs": []\par
+    \},\par
+    \{\par
+      "cell_type": "code",\par
+      "source": [\par
+        "model.add(Convolution2D(32,(3,3),input_shape = (64,64,3),activation = \\"relu\\"))"\par
+      ],\par
+      "metadata": \{\par
+        "id": "Cz5syO76iiZG"\par
+      \},\par
+      "execution_count": 3,\par
+      "outputs": []\par
+    \},\par
+    \{\par
+      "cell_type": "code",\par
+      "source": [\par
+        "model.add(MaxPooling2D(pool_size = (2,2)))"\par
+      ],\par
+      "metadata": \{\par
+        "id": "5uOX3_-Yin2W"\par
+      \},\par
+      "execution_count": 4,\par
+      "outputs": []\par
+    \},\par
+    \{\par
+      "cell_type": "code",\par
+      "source": [\par
+        "model.add(Convolution2D(32,(3,3),activation='relu'))"\par
+      ],\par
+      "metadata": \{\par
+        "id": "0Me_YILoiscu"\par
+      \},\par
+      "execution_count": 5,\par
+      "outputs": []\par
+    \},\par
+    \{\par
+      "cell_type": "code",\par
+      "source": [\par
+        "model.add(MaxPooling2D(pool_size=(2,2)))"\par
+      ],\par
+      "metadata": \{\par
+        "id": "2xvzNE6oixMH"\par
+      \},\par
+      "execution_count": 6,\par
+      "outputs": []\par
+    \},\par
+    \{\par
+      "cell_type": "code",\par
+      "source": [\par
+        "model.add(Flatten()) # ANN Input..."\par
+      ],\par
+      "metadata": \{\par
+        "id": "FTB7Eeyxi5bg"\par
+      \},\par
+      "execution_count": 7,\par
+      "outputs": []\par
+    \},\par
+    \{\par
+      "cell_type": "markdown",\par
+      "source": [\par
+        "Adding dense layers"\par
+      ],\par
+      "metadata": \{\par
+        "id": "Z_-ZMXUtjmLX"\par
+      \}\par
+    \},\par
+    \{\par
+      "cell_type": "code",\par
+      "source": [\par
+        "model.add(Dense(units = 128,kernel_initializer = \\"random_uniform\\",activation = \\"relu\\"))"\par
+      ],\par
+      "metadata": \{\par
+        "id": "Thg7dLD3jHb4"\par
+      \},\par
+      "execution_count": 9,\par
+      "outputs": []\par
+    \},\par
+    \{\par
+      "cell_type": "code",\par
+      "source": [\par
+        "model.add(Dense(units = 128,kernel_initializer = \\"random_uniform\\",activation = \\"relu\\"))"\par
+      ],\par
+      "metadata": \{\par
+        "id": "TKwvgmByjt_p"\par
+      \},\par
+      "execution_count": 10,\par
+      "outputs": []\par
+    \},\par
+    \{\par
+      "cell_type": "code",\par
+      "source": [\par
+        "model.add(Dense(units = 128,kernel_initializer = \\"random_uniform\\",activation = \\"relu\\"))"\par
+      ],\par
+      "metadata": \{\par
+        "id": "pyTyaVr1jyjI"\par
+      \},\par
+      "execution_count": 11,\par
+      "outputs": []\par
+    \},\par
+    \{\par
+      "cell_type": "code",\par
+      "source": [\par
+        "model.add(Dense(units = 128,kernel_initializer = \\"random_uniform\\",activation = \\"relu\\"))"\par
+      ],\par
+      "metadata": \{\par
+        "id": "4vSLVDoVj3fJ"\par
+      \},\par
+      "execution_count": 12,\par
+      "outputs": []\par
+    \},\par
+    \{\par
+      "cell_type": "code",\par
+      "source": [\par
+        "model.add(Dense(units = 128,kernel_initializer = \\"random_uniform\\",activation = \\"relu\\"))"\par
+      ],\par
+      "metadata": \{\par
+        "id": "C0rTXwLYj8o4"\par
+      \},\par
+      "execution_count": 13,\par
+      "outputs": []\par
+    \},\par
+    \{\par
+      "cell_type": "markdown",\par
+      "source": [\par
+        "Configure the learning process"\par
+      ],\par
+      "metadata": \{\par
+        "id": "fqlbxbwCkDBS"\par
+      \}\par
+    \},\par
+    \{\par
+      "cell_type": "code",\par
+      "source": [\par
+        "model.compile(optimizer='adam',loss='categorial_crossentropy',metrics=['accuracy'])"\par
+      ],\par
+      "metadata": \{\par
+        "id": "R2do7QSfkLiS"\par
+      \},\par
+      "execution_count": 14,\par
+      "outputs": []\par
+    \},\par
+    \{\par
+      "cell_type": "markdown",\par
+      "source": [\par
+        "Adding output layers"\par
+      ],\par
+      "metadata": \{\par
+        "id": "cokZDOnAlIVR"\par
+      \}\par
+    \},\par
+    \{\par
+      "cell_type": "code",\par
+      "source": [\par
+        "model.add(Dense(units = 6,kernel_initializer = \\"random_uniform\\",activation = \\"softmax\\"))"\par
+      ],\par
+      "metadata": \{\par
+        "id": "O5hPcja8lcKC"\par
+      \},\par
+      "execution_count": 15,\par
+      "outputs": []\par
+    \},\par
+    \{\par
+      "cell_type": "code",\par
+      "source": [\par
+        "model.summary()"\par
+      ],\par
+      "metadata": \{\par
+        "colab": \{\par
+          "base_uri": "{\field{\*\fldinst{HYPERLINK "https://localhost:8080/"}}{\fldrslt{\ul\cf1 https://localhost:8080/}}}\f0\fs22 "\par
+        \},\par
+        "id": "4U4dE6O9l0Dk",\par
+        "outputId": "afe39559-b55e-4a84-a7b6-d2daf69a403b"\par
+      \},\par
+      "execution_count": 16,\par
+      "outputs": [\par
+        \{\par
+          "output_type": "stream",\par
+          "name": "stdout",\par
+          "text": [\par
+            "Model: \\"sequential\\"\\n",\par
+            "_________________________________________________________________\\n",\par
+            " Layer (type)                Output Shape              Param #   \\n",\par
+            "=================================================================\\n",\par
+            " conv2d (Conv2D)             (None, 62, 62, 32)        896       \\n",\par
+            "                                                                 \\n",\par
+            " max_pooling2d (MaxPooling2D  (None, 31, 31, 32)       0         \\n",\par
+            " )                                                               \\n",\par
+            "                                                                 \\n",\par
+            " conv2d_1 (Conv2D)           (None, 29, 29, 32)        9248      \\n",\par
+            "                                                                 \\n",\par
+            " max_pooling2d_1 (MaxPooling  (None, 14, 14, 32)       0         \\n",\par
+            " 2D)                                                             \\n",\par
+            "                                                                 \\n",\par
+            " flatten (Flatten)           (None, 6272)              0         \\n",\par
+            "                                                                 \\n",\par
+            " dense (Dense)               (None, 128)               802944    \\n",\par
+            "                                                                 \\n",\par
+            " dense_1 (Dense)             (None, 128)               16512     \\n",\par
+            "                                                                 \\n",\par
+            " dense_2 (Dense)             (None, 128)               16512     \\n",\par
+            "                                                                 \\n",\par
+            " dense_3 (Dense)             (None, 128)               16512     \\n",\par
+            "                                                                 \\n",\par
+            " dense_4 (Dense)             (None, 128)               16512     \\n",\par
+            "                                                                 \\n",\par
+            " dense_5 (Dense)             (None, 6)                 774       \\n",\par
+            "                                                                 \\n",\par
+            "=================================================================\\n",\par
+            "Total params: 879,910\\n",\par
+            "Trainable params: 879,910\\n",\par
+            "Non-trainable params: 0\\n",\par
+            "_________________________________________________________________\\n"\par
+          ]\par
+        \}\par
+      ]\par
+    \},\par
+    \{\par
+      "cell_type": "markdown",\par
+      "source": [\par
+        "Train the model"\par
+      ],\par
+      "metadata": \{\par
+        "id": "TvOC_blKmCBQ"\par
+      \}\par
+    \},\par
+    \{\par
+      "cell_type": "code",\par
+      "source": [\par
+        "model.fit_generator(generator=x_train,steps_per_epoch = len(x_train), epochs=9, validation_data=x_test,validation_"\par
+      ],\par
+      "metadata": \{\par
+        "id": "9WyABsEcmNBC"\par
+      \},\par
+      "execution_count": null,\par
+      "outputs": []\par
+    \},\par
+    \{\par
+      "cell_type": "markdown",\par
+      "source": [\par
+        "Save the model"\par
+      ],\par
+      "metadata": \{\par
+        "id": "RtsrvIhJmSY7"\par
+      \}\par
+    \},\par
+    \{\par
+      "cell_type": "code",\par
+      "source": [\par
+        "#Saving Model.\\n",\par
+        "model.save('ECG.h5')"\par
+      ],\par
+      "metadata": \{\par
+        "colab": \{\par
+          "base_uri": "{\field{\*\fldinst{HYPERLINK "https://localhost:8080/"}}{\fldrslt{\ul\cf1 https://localhost:8080/}}}\f0\fs22 "\par
+        \},\par
+        "id": "SP_LVkcvmXcz",\par
+        "outputId": "eb71e655-b174-4619-a81f-e6339cba4da9"\par
+      \},\par
+      "execution_count": 18,\par
+      "outputs": [\par
+        \{\par
+          "output_type": "stream",\par
+          "name": "stderr",\par
+          "text": [\par
+            "WARNING:tensorflow:Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.\\n"\par
+          ]\par
+        \}\par
+      ]\par
+    \},\par
+    \{\par
+      "cell_type": "markdown",\par
+      "source": [\par
+        "Test the model"\par
+      ],\par
+      "metadata": \{\par
+        "id": "rXPqU6cJmdOM"\par
+      \}\par
+    \},\par
+    \{\par
+      "cell_type": "code",\par
+      "source": [\par
+        "from tensorflow.keras.models import load_model\\n",\par
+        "from tensorflow.keras.preprocessing import image"\par
+      ],\par
+      "metadata": \{\par
+        "id": "V3wiSRLUmgHL"\par
+      \},\par
+      "execution_count": 19,\par
+      "outputs": []\par
+    \},\par
+    \{\par
+      "cell_type": "code",\par
+      "source": [\par
+        "model=load_model('ECG.h5')"\par
+      ],\par
+      "metadata": \{\par
+        "id": "aUFJJ6K1nb5t"\par
+      \},\par
+      "execution_count": null,\par
+      "outputs": []\par
+    \},\par
+    \{\par
+      "cell_type": "code",\par
+      "source": [\par
+        "img=image.load_img(\\"/content/fig_44.png\\",target_size=(64,64))"\par
+      ],\par
+      "metadata": \{\par
+        "id": "kvwl_HOkndFt"\par
+      \},\par
+      "execution_count": null,\par
+      "outputs": []\par
+    \},\par
+    \{\par
+      "cell_type": "code",\par
+      "source": [\par
+        "x=image.img_to_array(img)\\n",\par
+        "img"\par
+      ],\par
+      "metadata": \{\par
+        "id": "BBwRQ9L7nmf7"\par
+      \},\par
+      "execution_count": null,\par
+      "outputs": []\par
+    \},\par
+    \{\par
+      "cell_type": "code",\par
+      "source": [\par
+        "img"\par
+      ],\par
+      "metadata": \{\par
+        "id": "1RyXJI2MnqzT"\par
+      \},\par
+      "execution_count": null,\par
+      "outputs": []\par
+    \},\par
+    \{\par
+      "cell_type": "code",\par
+      "source": [\par
+        "import numpy as np"\par
+      ],\par
+      "metadata": \{\par
+        "id": "tuKEPwPvnzOm"\par
+      \},\par
+      "execution_count": 5,\par
+      "outputs": []\par
+    \},\par
+    \{\par
+      "cell_type": "code",\par
+      "source": [\par
+        "x=np.expand_dims(x,axis=0)"\par
+      ],\par
+      "metadata": \{\par
+        "id": "ZnX50DE9oDaN"\par
+      \},\par
+      "execution_count": null,\par
+      "outputs": []\par
+    \},\par
+    \{\par
+      "cell_type": "code",\par
+      "source": [\par
+        "pred = model.predict(x)\\n",\par
+        "y_pred=np.argmax(pred)\\n",\par
+        "y_pred\\n",\par
+        "1/1 [==============================] - 0s 151ms/step"\par
+      ],\par
+      "metadata": \{\par
+        "id": "dn-7rDJ8oEVV"\par
+      \},\par
+      "execution_count": null,\par
+      "outputs": []\par
+    \},\par
+    \{\par
+      "cell_type": "code",\par
+      "source": [\par
+        "index=['left Bundle Branch block',\\n",\par
+        "       'Normal',\\n",\par
+        "       'Premature Atrial Contraction',\\n",\par
+        "       'Premature Ventricular Contraction',\\n",\par
+        "       'Right Bundle Branch Block',\\n",\par
+        "       'Ventricular Fibrillation']"\par
+      ],\par
+      "metadata": \{\par
+        "id": "lfJLOhkOoI0l"\par
+      \},\par
+      "execution_count": null,\par
+      "outputs": []\par
+    \},\par
+    \{\par
+      "cell_type": "code",\par
+      "source": [\par
+        "result = str(index[y_pred])\\n",\par
+        "result"\par
+      ],\par
+      "metadata": \{\par
+        "id": "0en7188KoMYO"\par
+      \},\par
+      "execution_count": null,\par
+      "outputs": []\par
+    \},\par
+    \{\par
+      "cell_type": "code",\par
+      "source": [\par
+        "'Right Bundle Branch Block'"\par
+      ],\par
+      "metadata": \{\par
+        "colab": \{\par
+          "base_uri": "{\field{\*\fldinst{HYPERLINK "https://localhost:8080/"}}{\fldrslt{\ul\cf1 https://localhost:8080/}}}\f0\fs22 ",\par
+          "height": 35\par
+        \},\par
+        "id": "0hxLeqbPoQYG",\par
+        "outputId": "d1996588-9d08-4430-ead8-889901a374ab"\par
+      \},\par
+      "execution_count": 7,\par
+      "outputs": [\par
+        \{\par
+          "output_type": "execute_result",\par
+          "data": \{\par
+            "text/plain": [\par
+              "'Right Bundle Branch Block'"\par
+            ],\par
+            "application/vnd.google.colaboratory.intrinsic+json": \{\par
+              "type": "string"\par
+            \}\par
+          \},\par
+          "metadata": \{\},\par
+          "execution_count": 7\par
+        \}\par
+      ]\par
+    \}\par
+  ]\par
+\}\par
+}
+ 
